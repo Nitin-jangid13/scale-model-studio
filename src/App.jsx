@@ -14,6 +14,7 @@ const FALLBACK = {
 export default function App() {
   const [content, setContent] = useState(FALLBACK);
   const [loaded, setLoaded] = useState(false);
+  const [loadFailed, setLoadFailed] = useState(false);
   const [page, setPage] = useState('home');
   const [cartCount, setCartCount] = useState(0);
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -25,7 +26,7 @@ export default function App() {
     fetch('/content.json')
       .then((r) => r.json())
       .then((data) => { setContent(data); setLoaded(true); })
-      .catch(() => setLoaded(true));
+      .catch(() => { setLoaded(true); setLoadFailed(true); });
   }, []);
 
   const addToCart = () => setCartCount((c) => c + 1);
@@ -44,7 +45,23 @@ export default function App() {
   };
 
   if (isEditMode) {
-    return <EditMode initialContent={loaded ? content : FALLBACK} />;
+    if (!loaded) {
+      return (
+        <div style={{ padding: '3rem', fontFamily: 'sans-serif', color: '#16233A' }}>
+          Loading your current content…
+        </div>
+      );
+    }
+    if (loadFailed) {
+      return (
+        <div style={{ padding: '3rem', fontFamily: 'sans-serif', color: '#16233A', maxWidth: 500 }}>
+          <strong>Couldn't load your current content.</strong>
+          <p>Don't copy or publish anything from an edit page in this state — it would overwrite your real
+          content with blank data. Refresh the page and try again. If this keeps happening, tell Claude.</p>
+        </div>
+      );
+    }
+    return <EditMode initialContent={content} />;
   }
 
   const filteredPortfolio = filter === 'All' ? content.portfolio : content.portfolio.filter((p) => p.category === filter);

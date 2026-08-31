@@ -1,12 +1,12 @@
 {
   "hero": {
     "title": "Scale models that make a design decision easy to see",
-    "subtitle": "We build precision architectural models for architects, developers and institutions in Delhi — from first massing study to a finished presentation piece, cut and assembled by hand."
+    "subtitle": "We build precision architectural models for architects, developers and institutions in Delhi."
   },
   "stats": [
-    { "num": "4+", "label": "Years building models" },
-    { "num": "40+", "label": "Projects delivered" },
-    { "num": "3", "label": "Sectors served — residential, commercial, institutional" }
+    { "num": "20+", "label": "Years building models" },
+    { "num": "500+", "label": "Projects delivered" },
+    { "num": "8", "label": "Sectors served" }
   ],
   "services": [
     { "name": "Residential Model", "desc": "Homes, apartments and townships built to scale, with landscaping and material accuracy.", "price": "₹35,000", "time": "15–20 days" },
@@ -31,7 +31,7 @@
   ],
   "contact": {
     "address": "Delhi, India",
-    "email": "scalemodelstudio@gmail.com",
-    "phone": "+91 98XXXXXX95"
+    "email": "scalemodelstudio.in@gmail.com",
+    "phone": "8800670903"
   }
 }
